@@ -1,0 +1,7 @@
+{
+  "[python]": {
+    "editor.defaultFormatter": "Glavin001.unibeautify-vscode"
+  },
+  "editor.defaultFormatter": "Glavin001.unibeautify-vscode",
+  "editor.formatOnSave": true
+}
