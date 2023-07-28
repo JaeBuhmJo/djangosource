@@ -1,7 +1,8 @@
 document.querySelector("ul.pagination").addEventListener("click", e => {
   e.preventDefault();
   if (e.target.tagName === "A") {
-    const page = e.target.getAttribute("href");
-    console.log(page);
+    const href = e.target.getAttribute("href");
+    document.querySelector("#page").value = href;
+    document.querySelector("#actionForm").submit();
   }
 });
