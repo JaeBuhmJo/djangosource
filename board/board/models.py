@@ -12,6 +12,7 @@ class Question(models.Model):
     created_at = models.DateTimeField(auto_now_add=True, verbose_name="작성날짜")
     modified_at = models.DateTimeField(verbose_name="수정날짜", null=True, blank=True)
     voter = models.ManyToManyField(User, related_name="voter_question")
+    view_cnt = models.BigIntegerField(default=0)
 
     def __str__(self) -> str:
         return self.subject
@@ -32,3 +33,14 @@ class Comment(models.Model):
     modified_at = models.DateTimeField(verbose_name="수정날짜", null=True, blank=True)
     question = models.ForeignKey(Question, on_delete=models.CASCADE, null=True, blank=True)
     answer = models.ForeignKey(Answer, on_delete=models.CASCADE, null=True, blank=True)
+
+class QuestionCount(models.Model):
+    """
+    조회수 업데이트를 위한 모델
+    사용자의 ip 저장
+    """
+    ip = models.CharField(max_length=30)
+    question = models.ForeignKey(Question, on_delete=models.CASCADE)
+
+    def __str__(self) -> str:
+        return self.ip

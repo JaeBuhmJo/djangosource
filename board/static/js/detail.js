@@ -18,3 +18,10 @@ recommemdAll.forEach(item => {
     }
   });
 });
+
+const actionForm = document.querySelector("#actionForm");
+
+document.querySelector(".btn-primary").addEventListener("click", e => {
+  e.preventDefault();
+  actionForm.submit();
+});

@@ -24,3 +24,27 @@ document.querySelector("#btn_search").addEventListener("click", e => {
   actionForm.querySelector("#keyword").value = topKeyword.value;
   actionForm.submit();
 });
+
+// 정렬 기준 변화 시 값을 가져와서
+// page=1로 변경
+// actionForm의 sort 값 변경한 후 actionForm 전송
+const select = document.querySelector("select.so");
+
+select.addEventListener("change", e => {
+  actionForm.querySelector("#page").value = 1;
+  actionForm.querySelector("#sort").value = select.value;
+  actionForm.submit();
+});
+
+// 제목 클릭 시
+// a태그 중지, href값 가져오기
+// actionForm의 action값을 가져온 href로 변경 후 actionForm submit
+const subjects = document.querySelectorAll("td>a");
+subjects.forEach(title => {
+  title.addEventListener("click", e => {
+    e.preventDefault();
+    const href = e.target.href;
+    actionForm.action = href;
+    actionForm.submit();
+  });
+});
